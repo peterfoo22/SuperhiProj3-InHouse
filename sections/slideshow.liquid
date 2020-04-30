@@ -86,4 +86,40 @@
       }
     ]
   }
+
 {% endschema %}
+
+
+<div class="slideshow-wrap" data-autoplay ="{{sections.settings.autoplay}}"
+data-autoplay-speed = "{{sections.settings.autoplay_speed}}">
+  {% for block in section.blocks %}
+   <div class="slide" {{block.shopify_attributes}}>
+
+    {% if block.settings.image != blank %}
+      <div class="slide-image">
+        <img src="{{block.settings.image | img_url: '600x'}}" alt="{{block.settings.image.alt}}">
+      </div>
+    {% endif %}
+
+    <div class="slide-content">
+      <h1>{{ block.settings.title }}</h1>
+
+      {% if block.settings.content %}
+        <a>{{ block.settings.content }}</a>
+      {% endif %}
+
+      {% if block.settings.button_url != blank %}
+        <a href="{{button.settings.button_url}}" class = "button">
+          {% if block.settings.button_text != blank %}
+            {{ block.setings.button_text }}
+          {% else %}
+            {{'general.shop.shop_now' | t }}
+          {% endif %}
+        </a>
+      {% endif %}
+
+     </div>
+
+   </div>
+  {% endfor %}
+</div>

@@ -2,7 +2,8 @@
   "general": {
     "shop": {
       "title": "In House",
-      "description": "Designer furniture for the discerning customer."
+      "description": "Designer furniture for the discerning customer.",
+      "shop_now": "Shop Now"
     },
     "404":{
       "error_code": "404",
@@ -62,8 +63,6 @@
   }
 
 }
-
-
 
 
 }
