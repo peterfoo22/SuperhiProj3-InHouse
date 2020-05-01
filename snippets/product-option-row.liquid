@@ -5,19 +5,19 @@
 
   <div class="option-values">
     {% if type == 'select' %}
-      <select name="{{option_name}}" id="select-{{ option_name }}">
+
+      <select name="{{ option_name }}" id="select-{{ option_name }}">
+      <option value="placeholder" disabled selected="">Select {{ option.name }}</option>
         {% for value in option.values %}
-          <option value="{{ value }}"></option>
+          <option value="{{ value }}">{{value}}</option>
         {% endfor %}
       </select>
     {% else %}
       {% for value in option.values %}
-      {% assign radio_id = 'option-' | append: option_name | append: '-' | append: value | handelize %}
-
-      <input id="{{radio_id}}" type="radio" name = "{{option_name}}" value = "{{ value }}">
-      <label for="{{radio_id}}">{{value}}</label>
-    {% endfor %}
-
+        {% assign radio_id = 'option-' | append: option_name | append: '-' | append: value | handelize %}
+        <input id="{{radio_id}}" type="radio" name = "{{option_name}}" value = "{{ value }}">
+        <label for="{{radio_id}}">{{value}}</label>
+      {% endfor %}
     {% endif %}
 
   </div>
