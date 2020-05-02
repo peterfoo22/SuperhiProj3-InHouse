@@ -45,7 +45,14 @@ $(document).ready(function(){
         hasVariant = selectedVariant != null,
         canAddtoCart = hasVariant && selectedVariant.inventory_quantity > 0
         $id = $form.find('.js-variant-id'),
-        $addToCartButton = $form.find('#add-to-cart-button');
+        $addToCartButton = $form.find('#add-to-cart-button'),
+        $price = $form.find('.js-price'),
+        formattedVariantPrice,
+        priceHTML;
+
+        if(hasVariant){
+          formattedVariantPrice = (selectedVariant.price/100).toFixed(2);
+        }
 
         if(canAddtoCart){
           $id.val(selectedVariant.id);
@@ -53,7 +60,7 @@ $(document).ready(function(){
         }
         else{
           $id.val('');
-          $addToCartButton.prop('disabled', true)
+          $addToCartButton.prop('disabled', true);
         }
     },
     init: function(){
