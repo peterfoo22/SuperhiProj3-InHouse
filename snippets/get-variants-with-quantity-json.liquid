@@ -5,7 +5,7 @@
   {% for variant in product.variants %}
     {% assign replace_hook_variant_id = '"id":'| append: variant.id %} {% comment %} A string with the ID = (product.variant id) {% endcomment %}
     {% assign replace_id_plus_inventory = replace_hook_variant_id | append: ',' | append:
-    '"inventory_quantity:"' | append: variant.inventory_quantity %}
+    '"inventory_quantity":' | append: variant.inventory_quantity %}
     {% assign variants_with_quantity_json = variants_with_quantity_json | replace: replace_hook_variant_id,
       replace_id_plus_inventory %}
   {% endfor %}

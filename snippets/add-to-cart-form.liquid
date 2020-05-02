@@ -19,7 +19,7 @@
 {% endif %}
 
 <form id = "add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data"
-id="AddToCartForm" data-variable="{{variants_with_quantity_json | url_param_escape}}">
+data-variants="{{variants_with_quantity_json | url_param_escape}}">
 
   {% if has_multiple_options or has_multiple_variants %}
 
@@ -40,7 +40,7 @@ id="AddToCartForm" data-variable="{{variants_with_quantity_json | url_param_esca
   <span data-default-price ="{{ product.price | money}}" class = "js-price">{{ current_variant.price | money }}</span>
   <label for="Quantity">quantity</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  <button type="submit" name="add" id="add-to-cart-form" {% if can_add_to_cart != true %} disabled {% endif %}>Add to cart</button>
+  <button type="submit" name="add" id="add-to-cart-button" {% if can_add_to_cart != true %} disabled {% endif %}>Add to cart</button>
 </form>
 
 

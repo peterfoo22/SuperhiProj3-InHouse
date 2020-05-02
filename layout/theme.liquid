@@ -8,9 +8,9 @@
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   {{ content_for_header }} <!-- Header hook for plugins -->
+  {{ 'jquery-3.3.1.min.js' | asset_url | script_tag }}
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
-  {{ 'jquery-3.3.1.min.js' | asset_url | script_tag }}
 
 </head>
   <body>
