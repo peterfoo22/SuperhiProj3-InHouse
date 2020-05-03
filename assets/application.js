@@ -47,11 +47,17 @@ $(document).ready(function(){
         $id = $form.find('.js-variant-id'),
         $addToCartButton = $form.find('#add-to-cart-button'),
         $price = $form.find('.js-price'),
-        formattedVariantPrice,
-        priceHTML;
+        formattedVariantPrice =0,
+        priceHTML ="";
 
         if(hasVariant){
-          formattedVariantPrice = (selectedVariant.price/100).toFixed(2);
+          formattedVariantPrice = "$" + (selectedVariant.price/100).toFixed(2);
+          priceHTML = '<span class = money>' + formattedVariantPrice + '</span>';
+          window.history.replaceState(null, null, '?variant=' + selectedVariant.id)
+
+        }
+        else{
+          priceHTML = $price.attr('data-default-price')
         }
 
         if(canAddtoCart){
@@ -62,6 +68,8 @@ $(document).ready(function(){
           $id.val('');
           $addToCartButton.prop('disabled', true);
         }
+
+        $price.html(priceHTML);
     },
     init: function(){
       $(document).on('change', productOptionSelector, productForm.onProductOptionChanged);
@@ -71,5 +79,55 @@ $(document).ready(function(){
 
 
   productForm.init();
+
+  let ajaxify = {
+    onAddToCart: function(event){
+      event.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url:'/cart/add.js',
+        data: $(this).serialize(),
+        dataType:'json',
+        success: ajaxify.onCartUpdated,
+        error: ajaxify.onError
+      });
+    },
+    onCartUpdated: function(){
+      console.log("cart updated")
+      // $.ajax({
+      //   type:'GET',
+      //   url: '/cart',
+      //   context: document.body,
+      //   success: function(context){
+      //     let
+      //       $dataCartContents = $(context).find('.js-cart-page-contents'),
+      //       dataCartHTML = $dataCartContents.html(),
+      //       dataCartItemcount = $dataCartContents.attr('data-cart-item-count'),
+      //       $miniCartContents = $('.js-mini-cart-contents'),
+      //       $cartItemCount = $(".js-cart-item-count");
+
+      //       $cartItemCount.text(dataCartItemcount);
+      //       $miniCartContents.html(dataCartHTML);
+
+      //       if(parseInt(dataCartItemcount) > 0){
+      //         openCart()
+      //       }else{
+      //         closeCart();
+      //       }
+      //   }
+      // });
+    },
+    onError: function(XMLHttpRequest, textStatus){
+        let data = XMLHttpRequest.responseJSON;
+        alert(data.status + '-' + data.message + ':' + data.description)
+    },
+    init:function(){
+      $(document).on('submit', addtoCartFormSelector, ajaxify.onAddToCart)
+    }
+  }
+
+  ajaxify.init()
+
+
 
 });

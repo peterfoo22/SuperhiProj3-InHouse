@@ -10,4 +10,11 @@ we used schema tags to create the settings within out page.
 
 5/1/2020-  Wrote another section called content where we setup the schema and setup the HTML output on the same page.
 
-5/2/2020- Worked with the add to cart form, and adding logic based on variants and product availables
+5/2/2020- Worked with the add to cart form, and adding logic based on variants and product availables, create json files
+to add quanitiy
+
+5/3/2020 - Validating and Invalidating the the addtocartform and adjusting the price based on the selected variant.
+
+
+5/4/2020= Finished up validating our addtocart form using our js file, and then started to add a mini cart functionality to
+the site.
