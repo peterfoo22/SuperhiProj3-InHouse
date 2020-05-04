@@ -160,4 +160,62 @@ $(document).ready(function(){
 
   ajaxify.init()
 
+  //Quantity fields
+  let
+    quantityFieldSelector = '.js-quantity-field',
+    quantityButtonSelector = '.js-quantity-button',
+    quantityPickerSelector = '.js-quantity-picker',
+    quantityPicker = {
+      onButtonClick: function(event){
+        let
+          $button = $(this),
+          $picker = $button.closest(quantityPickerSelector),
+          $quantity = $picker.find('.js-quantity-field'),
+          quantityValue = parseInt($quantity.val())
+          max = $quantity.attr('max') ? parseInt($quantity.attr('max')) : null;
+
+          if($button.hasClass('plus') && (max === null || quantityValue + 1 <= max)){
+            $quantity.val(quantityValue + 1).change()
+          }
+          else if ($button.hasClass('minus')){
+            $quantity.val(quantityValue - 1).change()
+          }
+      },
+      onChange: function(event){
+        let
+          $field = $(this),
+          $picker = $field.closest(quantityPickerSelector),
+          $quantity = $picker.find('.js-quantity-text'),
+          shouldDisableMinus = parseInt(this.value) === parseInt($field.attr('min')),
+          $minusbutton = $picker.find('.js-quantity-button.minus'),
+          shouldDisableplus = parseInt(this.value) === parseInt($field.attr('max')),
+          $plusbutton =$picker.find('.js-quantity-button.plus');
+
+          $quantity.text(this.value);
+
+        if (shouldDisableMinus){
+          $minusbutton.prop('disabled', true);
+        }
+        else if ($minusbutton.prop('disabled') === true) {
+          $minusbutton.prop('disabled', false);
+        }
+
+
+        if (shouldDisableplus){
+          $plusbutton.prop('disabled', true);
+        }
+        else if ($plusbutton.prop('disabled') === true) {
+          $plusbutton.prop('disabled', false);
+        }
+      },
+      init: function(){
+        $(document).on('click', quantityButtonSelector , quantityPicker.onButtonClick);
+
+        $(document).on('change', quantityFieldSelector , quantityPicker.onChange);
+      }
+
+    };
+
+  quantityPicker.init();
+
 });

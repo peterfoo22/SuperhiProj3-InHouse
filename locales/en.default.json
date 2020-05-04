@@ -39,30 +39,31 @@
       "subtotal":"Subtotal",
       "button": "Checkout",
       "currency_note_html":" We process all orders in {{ currency }}. While the contents of your cart are currently displayed in <span class=\"js-active-currency\"></span>, the checkout will use {{ currency }} at the current exchange rate."
-    },
-  "product":{
-
-    "card":{
-      "options_styles":"{{ optionCount }} options / {{ styleCount }} styles"
-    },
-    "slider":{
-      "count":"{{ slideStart }} of {{ slideTotal }}"
-    },
-    "shipping":{
-      "title":"Shipping",
-      "content": "Products ship via FedEx within 48 hours of order. Due to the nature of our products, signature confirmation is required upon delivery. For more information, see the Delivery & Returns page."
-    },
-    "returns":{
-      "title": "Returns",
-      "content":"We accept returns within 10 days of delivery. For more information, see the Delivery & Returns page."
-    }
+      }
   },
-  "form":{
-    "submit":"Add to Cart",
-    "sold_out":"Sold Out"
-  }
+    "product":{
+
+      "card":{
+        "options_styles":"{{ optionCount }} options / {{ styleCount }} styles"
+      },
+      "slider":{
+        "count":"{{ slideStart }} of {{ slideTotal }}"
+      },
+      "shipping":{
+        "title":"Shipping",
+        "content": "Products ship via FedEx within 48 hours of order. Due to the nature of our products, signature confirmation is required upon delivery. For more information, see the Delivery & Returns page."
+      },
+      "returns":{
+        "title": "Returns",
+        "content":"We accept returns within 10 days of delivery. For more information, see the Delivery & Returns page."
+      },
+      "form":{
+        "submit":"Add to Cart",
+        "quanitiy": "Quantity",
+        "sold_out":"Sold Out"
+      }
+
+    }
 
 }
 
-
-}

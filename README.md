@@ -18,3 +18,16 @@ to add quanitiy
 
 5/4/2020= Finished up validating our addtocart form using our js file, and then started to add a mini cart functionality to
 the site.
+
+Weekly Summary:
+
+1.  working with theme settings.
+2.  switiching currencies
+3.  creating schemas and template code for theme sections
+4.  Simplifying complex Add to Cart forms
+5.  hooking it all up to the Ajax API
+
+
+Week #4 - Finish InHouse Project
+
+5/5/20- Continue to work on addtocart functionality and line item .
