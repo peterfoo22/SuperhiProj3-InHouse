@@ -1,20 +1,25 @@
-{% paginate search.results by 10 %}
+<div id="page-search">
 
-  {% include 'search-form' %}
+    {% include 'search-form' %}
 
-  {% if search.performed %}
-    {% for item in search.results %}
-      {% if item.featured_image %}
-        <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-          {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-        </a>
-      {% endif %}
-      <h5>{{ item.title | link_to: item.url }}</h5>
-      <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-    {% else %}
-      no results
-    {% endfor %}
-  {% endif %}
+    {% if search.performed %}
+      {% assign product_count = 0 | times: 1 %}
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% include 'product-card' with product: item %}
+        {% endif %}
+      {% endfor %}
 
-  {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
-{% endpaginate %}
+
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% include 'product-card' with product: item %}
+        {% endif %}
+      {% endfor %}
+
+    {% endif %}
+
+    {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
+</div>
+
+
