@@ -8,7 +8,8 @@
   <div class="option-fieldset">
 
   <div class="visually-hidden">
-    <input type="number" id="Quantity" id="{{id}}" class = "js-quantity-field" name="{{name}}" value="{{value}}" {% if min != blank %}
+    <input type="number" class = "js-quantity-field {% if field_class != blank %} {{field_class}}
+    {% endif %}" id="Quantity" id="{{id}}" class = "js-quantity-field" name="{{name}}" value="{{value}}" {% if min != blank %}
       min="{{min}}" {% endif %}  {% if max != blank %} max="{{max}}" {% endif %}>
   </div>
 

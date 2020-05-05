@@ -12,6 +12,13 @@
 
     }
   },
+  "search":{
+      "form":{
+        "label": "Search In house",
+        "placeholder": "Your search term",
+        "submit": "Submit"
+      }
+  },
   "footer":{
     "list":{
       "products": "Our Products"
@@ -64,6 +71,7 @@
       }
 
     }
+
 
 }
 
